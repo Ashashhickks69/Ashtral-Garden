@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ashtral Gardens</title>
+  <link rel="stylesheet" href="Gardens.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>The Ashtral Garden</h1>
+    <p>A Place Of Creation</p>
+    <ul>
+      <li>
+        <a href="Link_Tree.html" style="color: lightblue;">Links</a>
+      </li>
+
+      <li>
+        <a href="Projects.html" style="color: #ffb23f;">Projects</a>
+      </li>
+
+      <li>
+        <a href="Rift_Apart.html" style="color: rgb(215, 107, 230);">Rift Apart</a>
+      </li>
+    </ul>
+  </header>
+
+  <form title="Click any where to drop a flower!" style="margin-left: 10px; position: fixed; top: 2.5%; background: linear-gradient(135deg, rgb(204, 0, 255), rgb(0, 255, 157)) ; border-radius: 10px; padding: 3.5px;">
+    <input type="checkbox" id="Hide" onclick="HideFlowers()">
+    <label>Hide Flowers</label>
+  </form>
+  <section class="Card">
+    <h1>Hey im Ash!</h1>
+    <hr>
+    <img id="Ash" src="gifs/Squish moff.gif">
+    <span style="font-size: 3vw;">Just your local furry {:</span>
+    <p style="font-size: 1.5vw;"> uhhh I guess you want more info.. Right? <p style="font-size: 1.5vw"> I'm a mediocre artist, who mainly draws moths, I know how to code, I play too much <a style="font-weight: bold; color: rgb(219, 0, 248);" href="https://www.fortnite.com">fortnite</a> lol, And I love making random shit. also I'm gay. :3 </p>
+  </section>
+
+  <section class="Card" style="text-align: center;">
+    <h1 style="font-size:xx-large; text-align: left; text-decoration: underline;">Projects</h1>
+    <ul>
+      <li>
+        <a href="Projects/ArtStuffWowie.html" style="color: rgb(184, 126, 207); background-image: url(Images/MsPaint29.png); background-size: 55px;">Art is the cool</a>
+      </li>
+
+      <li>
+        <a href="Projects/FunCodeThingsYippee.html?FromGardens=true" style="color: #ffb23f; background-image: url(Images/Code.png); background-repeat: no-repeat; background-size: 500px;">Fun Code Things Wow</a>
+      </li>
+
+      <li>
+        <a href="Rift_Apart.html" style="color: rgb(230, 107, 107); background-image: url(Images/yotob.png); background-size: 45px;">YouToeb</a>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Find me on <a href="https://bsky.app/profile/ashashhicks69.bsky.social" style="color: #00aeff;">BlueSky</a> or send me an <a href="mailto:Ashashhicks69art@Gmail.com" style="color: #ffb23f;">Email!</a></p>
+  </section>
+
+  <footer>
+    © 2025 Striker Studios – made with the power of the reality crystsals that form everything
+  </footer>
+
+  <!-- Garden strip -->
+  <div id="garden"></div>
+
+  <script src="Garden.js"></script>
+
+  <script>
+    const Ash = document.getElementById("Ash")
+    const List = ["gifs/Squish moff.gif", "gifs/Spining moff.gif", "gifs/Expload.gif"]
+    setInterval(function () {Ash.src=List[Math.floor(Math.random() * 3)]}, 5000);
+  </script>
+
+</body>
+</html>
