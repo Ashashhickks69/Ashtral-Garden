@@ -2,18 +2,18 @@ export default {
   async fetch(req, env) {
     const url = new URL(req.url);
 
-    // Post a new message
+    // POST a new message
     if (req.method === "POST" && url.pathname === "/message") {
       const { text } = await req.json();
       if (!text) return new Response("Missing text", { status: 400 });
 
-      const id = Date.now().toString(); // use timestamp as key
+      const id = Date.now().toString(); // timestamp as key
       await env.MESSAGES_KV.put(id, text);
 
       return new Response("OK", { status: 200 });
     }
 
-    // Get all messages
+    // GET all messages
     if (req.method === "GET" && url.pathname === "/messages") {
       const list = await env.MESSAGES_KV.list();
       const messages = await Promise.all(
