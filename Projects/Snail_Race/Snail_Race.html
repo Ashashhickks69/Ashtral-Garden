@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snail Race</title>
+
+    <style>
+        body{
+            font-family: 'Comic Sans MS';
+            overflow: hidden;
+            background-color: rgb(52, 146, 52);
+            color: white;
+        } 
+
+        .Snail{
+            image-rendering: pixelated;
+            transform: rotatey(190deg);
+            position: relative;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        .Flag{
+            image-rendering: pixelated;
+            transform: rotatey(190deg);
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            z-index: 0;
+            background-color: white;
+        }
+
+        button{
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+            font-size: 53px;
+            font-family: 'Comic Sans MS';
+            color: white;
+            text-decoration: underline;
+            position: absolute;
+            top: 0;
+            left: 192px;
+        }
+    </style>
+</head>
+<body>
+    <h1 title="Creator: Ash">Snail Race</h1>
+    <button id="Start" onclick="Start()">Start</button>
+    <p>
+    <div id="Message"></div>
+        <img class="Snail" id="0" src="pixil-frame-0.png" width="50">
+        <p>
+        <img class="Snail" id="1" src="pixil-frame-0.png" width="50">
+        <p>
+        <img class="Snail" id="2" src="pixil-frame-0.png" width="50">
+        <p>
+        <img class="Snail" id="3" src="pixil-frame-0.png" width="50">
+    <img class="Flag" src="Flag.png" width="10%">
+    <audio loop id="Music" src="Undertale OST - 024 Bonetrousle.mp3">
+    <script src="Race.JS"></script>
+</body>
+</html>
