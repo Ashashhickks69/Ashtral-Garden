@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wowzer a Bunch of links!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            color: rgb(255, 255, 255);
+            font-family: Rubik;
+            text-align: center;
+            background-image: url(Images/FunShapesBG.png);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-top: 6%;
+        }
+
+        a {
+            color: white;
+            border: solid;
+            border-radius: 99999999999px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 25%;
+            padding-right: 25%;
+            font-size: clamp(20px, 2vw, 40px);
+            background-color: rgb(129, 11, 129);
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: rgb(39, 0, 44);
+        }
+        a:active {
+            background-color: rgb(255, 0, 255)
+        }
+
+        .red {
+            color: white;
+            border: solid;
+            border-radius: 99999999999px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 25%;
+            padding-right: 25%;
+            font-size: clamp(20px, 2vw, 40px);
+            background-color: rgb(255, 97, 97);
+            text-decoration: none;
+        }
+
+        .red:hover {
+            background-color: rgb(179, 0, 0);
+        }
+        .red:active {
+            background-color: rgb(255, 63, 63)
+        }
+
+        .blue {
+            color: white;
+            border: solid;
+            border-radius: 99999999999px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 25%;
+            padding-right: 25%;
+            font-size: clamp(20px, 2vw, 40px);
+            background-color: rgb(97, 152, 255);
+            text-decoration: none;
+        }
+
+        .blue:hover {
+            background-color: rgb(0, 48, 179);
+        }
+        .blue:active {
+            background-color: rgb(63, 146, 255)
+        }
+
+        .grey {
+            color: white;
+            border: solid;
+            border-radius: 99999999999px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 25%;
+            padding-right: 25%;
+            font-size: clamp(20px, 2vw, 40px);
+            background-color: hsl(219, 0%, 69%);
+            text-decoration: none;
+        }
+
+        .grey:hover {
+            background-color: hsl(224, 0%, 35%);
+        }
+        .grey:active {
+            background-color: hsl(214, 0%, 62%)
+        }
+    </style>
+</head>
+<body>
+    <h1>Ashashhicks69's Links To The Web!</h1>
+    <ul>  
+        <li>
+            <a style="background-image: url(Images/str.png); background-size: 8%;" href="index.html">Ashtral Garden</a>
+        </li>  
+        <li>
+            <a style="background-image: url(Images/yotob.png); background-size: 15%;" href="https://youtube.com/@ashashhicks69?si=0u2mw8gf_kLHiuhf" class="red" >YouTube</a>
+        </li>
+        <li>
+            <a style="background-image: url(Images/Bewsky.png); background-size: 15%;" href="https://bsky.app/profile/ashashhicks69.bsky.social" class="blue" >BlueSky</a>
+        </li>
+        <li>
+            <a style="background-image: url(Images/gethub.png); background-size: 15%;" href="https://github.com/Ashashhickks69" class="grey" >GitHub</a>
+        </li>
+    </ul>
+    
+    <script>
+        document.addEventListener("click", (e) => {
+            const img = document.createElement("img");
+            img.src = "../Images/Splat.png";
+            img.style.position = "absolute";
+            img.style.width = "100px"
+            img.style.left = e.pageX - 40 + "px";
+            img.style.top = e.pageY - 40 + "px";
+            img.style.pointerEvents = "none";
+
+            const angle = Math.floor(Math.random() * 360);
+            img.style.transform = `rotate(${angle}deg)`;
+
+            document.body.appendChild(img);
+
+            const sound = new Audio("../Music/Splat.mp3");
+            sound.play();
+        })
+    </script>
+</body>
+</html>
