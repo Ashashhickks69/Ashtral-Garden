@@ -5,8 +5,11 @@
   <title>Message Board</title>
   <style>
     body { font-family: Arial; padding: 20px; }
+    h2 { margin-bottom: 10px; }
     #messages { margin-top: 20px; }
     .msg { padding: 5px; border-bottom: 1px solid #ccc; }
+    input { padding: 5px; width: 300px; }
+    button { padding: 5px 10px; }
   </style>
 </head>
 <body>
@@ -20,8 +23,10 @@
   <div id="messages"></div>
 
   <script>
+    const WORKER_ROOT = "/"; // points to the root where _worker.js lives
+
     async function loadMessages() {
-      const res = await fetch("/messages");
+      const res = await fetch(WORKER_ROOT + "messages");
       const msgs = await res.json();
       document.getElementById("messages").innerHTML = msgs.map(m =>
         `<div class="msg">${m.text}</div>`
@@ -32,7 +37,7 @@
       e.preventDefault();
       const text = document.getElementById("msgInput").value.trim();
       if (!text) return;
-      await fetch("/message", {
+      await fetch(WORKER_ROOT + "message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text })
