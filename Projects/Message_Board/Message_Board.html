@@ -1,31 +1,47 @@
-<form id="msgForm">
-  <input type="text" id="msgInput" placeholder="Write something..." required>
-  <button type="submit">Post</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Board</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #messages { margin-top: 20px; }
+    .msg { padding: 5px; border-bottom: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h2>Message Board</h2>
 
-<div id="messages"></div>
+  <form id="msgForm">
+    <input type="text" id="msgInput" placeholder="Write something..." required>
+    <button type="submit">Post</button>
+  </form>
 
-<script>
-async function loadMessages() {
-  const res = await fetch("/messages");
-  const msgs = await res.json();
-  document.getElementById("messages").innerHTML = msgs.map(m =>
-    `<div class="msg">${m.text}</div>`
-  ).join("");
-}
+  <div id="messages"></div>
 
-document.getElementById("msgForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  const text = document.getElementById("msgInput").value.trim();
-  if (!text) return;
-  await fetch("/message", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text })
-  });
-  document.getElementById("msgInput").value = "";
-  loadMessages();
-});
+  <script>
+    async function loadMessages() {
+      const res = await fetch("/messages");
+      const msgs = await res.json();
+      document.getElementById("messages").innerHTML = msgs.map(m =>
+        `<div class="msg">${m.text}</div>`
+      ).join("");
+    }
 
-loadMessages();
-</script>
+    document.getElementById("msgForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      const text = document.getElementById("msgInput").value.trim();
+      if (!text) return;
+      await fetch("/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+      });
+      document.getElementById("msgInput").value = "";
+      loadMessages();
+    });
+
+    loadMessages();
+  </script>
+</body>
+</html>
