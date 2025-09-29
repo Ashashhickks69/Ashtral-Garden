@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wowie its Art stuff</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            color: rgb(40, 40, 40);
+            font-family: "Alan Sans";
+            background-image: url("../Images/FancyArtWall.jpg");
+            background-size: cover;    
+            background-repeat: no-repeat; 
+            background-position: center;   
+            margin: 0;                     
+            height: 100vh;                 
+        }
+
+        div {
+            overflow-x: scroll;
+            display: flex;
+            height: 69%;
+        }
+
+        div img {
+            border: double;
+            border-color: gold;
+            background-color: darkgoldenrod;
+            border-width: 20px;
+            margin-left: 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.295);
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin-left: 10px; font-size: 50px;">Teh Art gallery</h1>
+    <span style="margin-left: 20px; position: absolute; top: 90px;">Hover over a painting to see the name and description</span>
+    
+    <a href="../index.html">
+        <img src="../Images/FancyArtExit.jpg" style="position: fixed; width: 80px; bottom: 150px; left: 100px;" title="This Is A Sign That Will Also Take You To The Gardens.">
+        <img src="../Images/FancyArtDoor.jpg" style="position: fixed; width: 80px; bottom: 80px; left: 10px;" title="The Door To The Gardens.">
+    </a>
+
+    <div>
+        <img src="../Images/Peebr grip it.png" title="Peebr Gripit: holly carp its pebr grip in">
+        <img src="../Images/HelpHim.png" title="Hanging in the flame: I Made This For a Roblox Game im Making!">
+    </div>
+    
+    <audio autoplay loop controls style="position: fixed; bottom: 20px; left: 10px;">
+        <source src="../Music/FancyFancyRichPeopleMusic.mp3">
+    </audio>
+
+    <script>
+        document.addEventListener("click", (e) => {
+            const img = document.createElement("img");
+            img.src = "../Images/Splat.png";
+            img.style.position = "absolute";
+            img.style.width = "100px"
+            img.style.left = e.pageX - 40 + "px";
+            img.style.top = e.pageY - 40 + "px";
+            img.style.pointerEvents = "none";
+
+            const angle = Math.floor(Math.random() * 360);
+            img.style.transform = `rotate(${angle}deg)`;
+
+            document.body.appendChild(img);
+
+            const sound = new Audio("../Music/Splat.mp3");
+            sound.play();
+        })
+    </script>
+</body>
+</html>
