@@ -1,0 +1,31 @@
+<form id="msgForm">
+  <input type="text" id="msgInput" placeholder="Write something..." required>
+  <button type="submit">Post</button>
+</form>
+
+<div id="messages"></div>
+
+<script>
+async function loadMessages() {
+  const res = await fetch("/messages");
+  const msgs = await res.json();
+  document.getElementById("messages").innerHTML = msgs.map(m =>
+    `<div class="msg">${m.text}</div>`
+  ).join("");
+}
+
+document.getElementById("msgForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const text = document.getElementById("msgInput").value.trim();
+  if (!text) return;
+  await fetch("/message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text })
+  });
+  document.getElementById("msgInput").value = "";
+  loadMessages();
+});
+
+loadMessages();
+</script>
