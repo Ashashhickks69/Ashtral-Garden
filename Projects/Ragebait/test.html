@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+      body{
+        background-image: url(StarBG.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        text-align: center;
+        margin: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      
+      h1{
+        font-size: 50px;
+        font-family: Signika;
+      }
+
+      div{
+        color: white;
+        background-color: rgb(255, 101, 152);
+        border: inset;
+        border-color: rgb(255, 0, 85);
+        border-radius: 20px;
+        border-width: 5px;
+        padding: 10px;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      div #Tut{
+        padding: 10px;
+        font-size: 30px;
+        background-color: rgb(181, 28, 79);
+        border-color: rgb(255, 0, 85);
+        border-radius: 20px;
+        border-width: 5px;
+      }
+      div #Desc{
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        background-color: rgb(181, 28, 79);
+        border-color: rgb(255, 0, 85);
+        border-radius: 20px;
+        border-width: 5px;
+      }
+      div #Disc{
+        border: none;
+        color: rgba(255, 255, 255, 0.428);
+      }
+      div span{
+        border: none;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.428);
+      }
+      
+      div img{
+        width:200px;
+        height: 200px;
+        cursor:pointer;
+      }
+
+      iframe{
+        margin-top: 50px;
+        width: 600px;
+        height: 200px;
+        border: solid;
+        border-width: 5px;
+        border-color: rgb(255, 0, 85);
+        color: rgb(255, 0, 85);
+      }
+      h1{
+        margin-top: 0;
+        color: white;
+        text-decoration: underline;
+      }
+
+      form{
+        text-align: center;
+      }
+      form #message{
+        font-size: 30px;
+        padding-left: 10px;
+        border-width: 5px;
+        border-radius: 60px;
+        border-color: rgb(255, 0, 85);
+        color: rgb(255, 0, 85);
+        background-color: rgba(255, 255, 255, 0.497);
+      }
+      form button{
+        padding: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-width: 5px;
+        font-size: 25px;
+        border-radius: 60px;
+        border-color: rgb(255, 0, 85);
+        color: rgb(255, 0, 85);
+        background-color: rgba(255, 255, 255, 0.497);
+      }
+      form button:hover{
+        background-color: rgba(255, 0, 85, 0.322);
+      }
+
+      form div{
+        width: 800px; display:flex; gap: 10px; flex-wrap: wrap; justify-content:center; margin-top:10px;
+       margin-bottom: 100px;
+      }
+      
+      ul {
+        list-style-type: none;
+        margin: 0;
+        margin-bottom: 30px;
+        padding: 0;
+        background-color: rgb(255, 101, 152);
+        display: flex;
+        border-bottom: solid;
+        border-color: rgb(255, 0, 85);
+        border-width: 5px;
+        justify-content: center;
+      }
+      ul li a {
+        display: block;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      ul li a:hover {
+        background-color: #0000004d;
+      }
+      
+      @media only screen and (max-width:900px) {
+        form div{
+          width: 400px;
+        }
+        div img{
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+  <ul>
+    <li><a href="https://www.ashtral-garden.com">The Gardens</a></li>
+    <li><a href="https://www.ashtral-garden.com/Projects">Projects</a></li>
+    <li><a href="https://www.ashtral-garden.com/Projects/FunCodeThingsYippee">Code stuffs</a></li>
+  </ul>
+
+    <div>
+      <h1>Annoy My Friend</h1>
+      <div id="Desc">My friend keeps leaving me on read, So i made a Bot to bug him for me. <span>(im such a good friend :D)</span></div>
+      <div id="Tut">Type in a message, Pick a Gif, And Press Send!</div>
+      <div id="Disc"> Bad Words will be sensored*</div>
+    </div>
+    
+    <iframe src="Messages.txt"></iframe>
+    <h1>Chat</h1>
+
+    <form id="pingForm">
+      <input type="text" id="message" placeholder="Your message" required>
+      <button type="submit"><b>Send!</b></button>
+      <br>
+      <div id="gifSelect">
+        <img src="shaw-silksong.gif" data-gif="0">
+        <img src="the-knight-hollow-knight.gif" data-gif="1">
+        <img src="wild-hornets-wild-hornets-ukraine.gif" data-gif="2">
+        <img src="silksong-hollow-knight.gif" data-gif="3">
+        <img src="silk-song-hollow-knight.gif" data-gif="4">
+        <img src="hornet-silksong.gif" data-gif="5">
+        <img src="hornet-hollow-knight.gif" data-gif="6">
+        <img src="flea-hollow-knight.gif" data-gif="7">
+        <img src="hollow-knight-hollow-knight-silksong.gif" data-gif="8">
+      </div>
+    </form>
+
+
+    <script>
+    const webhookURL = "https://discord.com/api/webhooks/1452520647568785408/TZmGx4u0RQgf0uVRk7tpEbVGre9ONR6tN2BdiHRjctRXXSed12S48rHHfqX7mPdNeYsA";
+    let selectedGif = null;
+
+    document.querySelectorAll("#gifSelect img").forEach(img => {
+      img.addEventListener("click", () => {
+        selectedGif = img.dataset.gif;
+
+        document.querySelectorAll("#gifSelect img").forEach(i => i.style.border="none");
+        img.style.border = "5px solid white";
+      });
+    });
+
+    document.getElementById("pingForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const msg = document.getElementById("message").value;
+
+        fetch(webhookURL, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ content: `${msg} / ${selectedGif}`})
+        })
+        
+        .then(r => r.json())
+        .then(d => console.log("Sent!"))
+        .catch(e => console.error(e));
+        
+        e.target.reset();
+      });
+    </script>
+
+  </body>
+</html>
