@@ -1,1 +1,169 @@
-<a href="https://Google.com">test</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini MS Paint</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  }
+  #controls {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    background: #ffffffaa;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  button, input[type="range"], input[type="color"], input[type="file"] {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    background: #26c6da;
+    color: white;
+  }
+  button:hover, input[type="file"]:hover {
+    background: #00acc1;
+  }
+  input[type="color"] {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  input[type="range"] {
+    width: 100px;
+  }
+  #stampPreview {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #26c6da;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  canvas {
+    border: 2px solid #26c6da;
+    border-radius: 12px;
+    cursor: crosshair;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="controls">
+  <input type="color" id="colorPicker" value="#000000">
+  <input type="range" id="brushSize" min="1" max="50" value="5">
+  <button id="penBtn">Pen</button>
+  <button id="eraserBtn">Eraser</button>
+  <input type="file" id="stampInput" accept="image/*">
+  <button id="stampBtn">Stamp</button>
+  <img id="stampPreview" src="" alt="No stamp">
+  <button id="saveBtn">Save</button>
+  <button id="clearBtn">Clear</button>
+</div>
+
+<canvas id="paintCanvas" width="800" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById('paintCanvas');
+const ctx = canvas.getContext('2d');
+let painting = false;
+let currentTool = 'pen';
+let stampImg = null;
+const colorPicker = document.getElementById('colorPicker');
+const brushSize = document.getElementById('brushSize');
+const clearBtn = document.getElementById('clearBtn');
+const penBtn = document.getElementById('penBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const stampInput = document.getElementById('stampInput');
+const stampBtn = document.getElementById('stampBtn');
+const saveBtn = document.getElementById('saveBtn');
+const stampPreview = document.getElementById('stampPreview');
+
+
+
+function startPosition(e) {
+  painting = true;
+  if (currentTool === 'stamp' && stampImg) placeStamp(e);
+  else draw(e);
+}
+
+function endPosition() {
+  painting = false;
+  ctx.beginPath();
+}
+
+function draw(e) {
+  if (!painting || currentTool === 'stamp') return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  ctx.lineWidth = brushSize.value;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : colorPicker.value;
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+}
+
+function placeStamp(e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left - stampImg.width / 2;
+  const y = e.clientY - rect.top - stampImg.height / 2;
+  ctx.drawImage(stampImg, x, y);
+  const sounds = [
+  new Audio('Splat.mp3')
+    ];
+  sounds[Math.floor(Math.random() * sounds.length)].play();
+}
+
+penBtn.addEventListener('click', () => currentTool = 'pen');
+eraserBtn.addEventListener('click', () => currentTool = 'eraser');
+stampBtn.addEventListener('click', () => { if (stampImg) currentTool = 'stamp'; });
+
+stampInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const img = new Image();
+  img.onload = () => {
+    stampImg = img;
+    currentTool = 'stamp';
+    stampPreview.src = img.src;
+  }
+  img.src = URL.createObjectURL(file);
+});
+
+clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+saveBtn.addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = 'painting.png';
+  link.href = canvas.toDataURL();
+  link.click();
+});
+
+canvas.addEventListener('mousedown', startPosition);
+canvas.addEventListener('mouseup', endPosition);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseout', endPosition);
+</script>
+
+</body>
+</html>
