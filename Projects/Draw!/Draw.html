@@ -130,7 +130,7 @@ function placeStamp(e) {
   const y = e.clientY - rect.top - stampImg.height / 2;
   ctx.drawImage(stampImg, x, y);
   const sounds = [
-  new Audio('Splat.mp3')
+  new Audio('../Music/Splat.mp3')
     ];
   sounds[Math.floor(Math.random() * sounds.length)].play();
 }
