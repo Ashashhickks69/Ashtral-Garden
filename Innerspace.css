@@ -1,4 +1,4 @@
-body{ /* THE REPO WONT UPDATE AAAAA*/
+body{
     background-color: rgb(40, 30, 60);
     background-image: linear-gradient(rgba(78, 184, 255, 0) 0%, rgb(40, 30, 60) 15%), url(Images/GallaxyBG.png);
     background-repeat: no-repeat;
@@ -399,5 +399,6 @@ footer{
     font-size: 14px;
   }
 }
+
 
 
