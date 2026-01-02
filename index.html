@@ -21,7 +21,7 @@
 
     <nav>
         <ul>
-            <li><img src="NavIcon.png" style="position: relative; top: 11px;"></li>
+            <li><img src="Images/NavIcon.png" style="position: relative; top: 11px;"></li>
             <li><a href="">The Gardens</a></li>
             <li><a href="">Rift Apart</a></li>
             <li><a href="">Links</a></li>
@@ -45,7 +45,7 @@
         <h1>Hello Im Ashashhicks69!!</h1>
         <img src="Pfp.jpg" id="Pfp" alt="Profile picture">
         <span><span style="font-size: 35px;">I'm a silly, Gay, Furry, Moth!</span> <br> That Likes to make Random things Such as Art, Games, Videos, Or Obviously Websites! <br> I also Really like to play the hit game <a href="https://www.Fortnite.com">Fortnite!</a> Way too Much... <br> <span style="font-size: 15px; color: rgba(255, 255, 255, 0.428)">(like it was unhealthy but im good now.. sorta.)</span> <br> Im also making a Series about a Protogen that can explore the multiverse! <br> I got one more line to fill soooo heres this i guess. (O~o)</span>
-        <img src="BigImg1.png" id="BigImg" alt="Extra image">
+        <img src="Images/BigImg1.png" id="BigImg">
     </div>
 
     <div class="Featured">
@@ -58,7 +58,7 @@
         </div>
 
         <button class="nav" onclick="FeaturedRightArrow()" style="right: 24px;">></button>
-        <img src="RippleyHero.png" id="Hero">
+        <img src="Images/RippleyHero.png" id="Hero">
     </div>
 
     <footer>
@@ -106,9 +106,9 @@
         }
 
         const FeaturedDetails = [
-            {Title:"RIFT APART", Desc:"A Protogen gains the ability to cross worlds..", BGIMG:"GallaxyBG.png", HeroIMG:"RippleyHero.png", Link:"Rift_Apart.html"},
-            {Title:"ART STUFF", Desc:"Art Is cool i guess..", BGIMG:"GradientBG.png", HeroIMG:"DrawHero.png", Link:"ArtStuffs.html"},
-            {Title:"CODE STUFFS", Desc:"I Like to code stuff as well!!", BGIMG:"CodeBG.png", HeroIMG:"CodeHero.png", Link:"CodeStuffs.html"}
+            {Title:"RIFT APART", Desc:"A Protogen gains the ability to cross worlds..", BGIMG:"Images/GallaxyBG.png", HeroIMG:"RippleyHero.png", Link:"Rift_Apart.html"},
+            {Title:"ART STUFF", Desc:"Art Is cool i guess..", BGIMG:"GradientBG.png", HeroIMG:"Images/DrawHero.png", Link:"ArtStuffs.html"},
+            {Title:"CODE STUFFS", Desc:"I Like to code stuff as well!!", BGIMG:"Images/CodeBG.png", HeroIMG:"CodeHero.png", Link:"CodeStuffs.html"}
         ]
         let FeaturedIndex = 0
 
@@ -149,7 +149,7 @@
             document.addEventListener("click", (e) => {
                 if (document.getElementById("Toggle").checked) return;
                 const seed = document.createElement("img");
-                seed.src = "Pfp.jpeg";
+                seed.src = "Images/Pfp.jpeg";
                 seed.className = "seed";
                 seed.style.left = e.clientX + "px";
                 document.getElementById("flowerContainer").appendChild(seed);
@@ -162,7 +162,7 @@
                     seed.remove();
 
                     const flower = document.createElement("img");
-                    flower.src = "Pfp.jpeg";
+                    flower.src = "Images/Pfp.jpeg";
                     flower.className = "flower";
 
                     const size = 50 + Math.random() * 60;
@@ -202,3 +202,4 @@
 
 </body>
 </html>
+
