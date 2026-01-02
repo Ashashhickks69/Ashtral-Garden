@@ -68,7 +68,7 @@
 
     <script>
         const RandomMSG = document.getElementById("headerMSG")
-        const Messages = ["I sure do love my gradients.", "uhhhhhhhhhhhhhhhhhh Hi?????", "Did a Reality Crystal land here? - Rippley Slurp", "Yo Chat should we lowkey slime this guy?", '<img src="Pfp.jpeg" style="width:100px; margin-top:0;">', "What do you call a moth with no wings... a tragedy.", "Click anywhere to throw a Seed! And plant a Flower. I guess", "Fortnite is a game lol.", "Beastars 13 - pg.197 (Hehehe)", "B̷̜͋ë̵̳̻̹́ẃ̷̭̲̆ā̸̩̅r̵̊̄̎͜e̴͆͜ ̴͔̯̠̈́t̶͕̝̬̒̂͘h̵̛̰̖͕̉̕e̴͖̳̗̽ ̶͕̥̎̉o̵̠̓͛̈͜n̶̼̹͐̓̑e̴̡͋̂͐ ̷̹̗̑̽i̵̧͓̱̽n̷̺̰̔ ̵̮͕͉͑̌Ŗ̵̳̩̀Ê̶͈̹͗̚͜D̸̓̎͜", "私はフェムボーイが大好きです（笑）", "The Rift Apart Wiki has so many cool things wowwieee!!!", "I Play Deltarune but not undertale for some reason idk? (I own both Fyi)"]
+        const Messages = ["I sure do love my gradients.", "uhhhhhhhhhhhhhhhhhh Hi?????", "Did a Reality Crystal land here? - Rippley Slurp", "Yo Chat should we lowkey slime this guy?", '<img src="Images/Horny.jpeg" style="width:100px; margin-top:0;">', "What do you call a moth with no wings... a tragedy.", "Click anywhere to throw a Seed! And plant a Flower. I guess", "Fortnite is a game lol.", "Beastars 13 - pg.197 (Hehehe)", "B̷̜͋ë̵̳̻̹́ẃ̷̭̲̆ā̸̩̅r̵̊̄̎͜e̴͆͜ ̴͔̯̠̈́t̶͕̝̬̒̂͘h̵̛̰̖͕̉̕e̴͖̳̗̽ ̶͕̥̎̉o̵̠̓͛̈͜n̶̼̹͐̓̑e̴̡͋̂͐ ̷̹̗̑̽i̵̧͓̱̽n̷̺̰̔ ̵̮͕͉͑̌Ŗ̵̳̩̀Ê̶͈̹͗̚͜D̸̓̎͜", "私はフェムボーイが大好きです（笑）", "The Rift Apart Wiki has so many cool things wowwieee!!!", "I Play Deltarune but not undertale for some reason idk? (I own both Fyi)"]
 
         RandomMSG.innerHTML = Messages[Math.floor(Math.random() * Messages.length)]
 
@@ -106,9 +106,9 @@
         }
 
         const FeaturedDetails = [
-            {Title:"RIFT APART", Desc:"A Protogen gains the ability to cross worlds..", BGIMG:"Images/GallaxyBG.png", HeroIMG:"RippleyHero.png", Link:"Rift_Apart.html"},
-            {Title:"ART STUFF", Desc:"Art Is cool i guess..", BGIMG:"GradientBG.png", HeroIMG:"Images/DrawHero.png", Link:"ArtStuffs.html"},
-            {Title:"CODE STUFFS", Desc:"I Like to code stuff as well!!", BGIMG:"Images/CodeBG.png", HeroIMG:"CodeHero.png", Link:"CodeStuffs.html"}
+            {Title:"RIFT APART", Desc:"A Protogen gains the ability to cross worlds..", BGIMG:"Images/GallaxyBG.png", HeroIMG:"Images/RippleyHero.png", Link:"Rift_Apart.html"},
+            {Title:"ART STUFF", Desc:"Art Is cool i guess..", BGIMG:"Images/GradientBG.png", HeroIMG:"Images/DrawHero.png", Link:"ArtStuffs.html"},
+            {Title:"CODE STUFFS", Desc:"I Like to code stuff as well!!", BGIMG:"Images/CodeBG.png", HeroIMG:"Images/CodeHero.png", Link:"CodeStuffs.html"}
         ]
         let FeaturedIndex = 0
 
@@ -149,7 +149,7 @@
             document.addEventListener("click", (e) => {
                 if (document.getElementById("Toggle").checked) return;
                 const seed = document.createElement("img");
-                seed.src = "Images/Pfp.jpeg";
+                seed.src = "Images/Horny.jpeg";
                 seed.className = "seed";
                 seed.style.left = e.clientX + "px";
                 document.getElementById("flowerContainer").appendChild(seed);
@@ -162,7 +162,7 @@
                     seed.remove();
 
                     const flower = document.createElement("img");
-                    flower.src = "Images/Pfp.jpeg";
+                    flower.src = "Images/Horny.jpeg";
                     flower.className = "flower";
 
                     const size = 50 + Math.random() * 60;
@@ -202,4 +202,5 @@
 
 </body>
 </html>
+
 
