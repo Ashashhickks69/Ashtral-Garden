@@ -1,84 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Ashtral Gardens</title>
-  <link rel="icon" type="image/x-icon\\" href="favicon.ico">
-  <link rel="stylesheet" href="Gardens.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ashtral Gardens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link id="theme" rel="stylesheet" href="Innerspace.css">
 </head>
 <body>
-  <header>
-    <h1>The Ashtral Garden</h1>
-    <p>A Place Of Creation</p>
-    <ul>
-      <li>
-        <a href="Link_Tree.html" style="color: lightblue;">Links</a>
-      </li>
 
-      <li>
-        <a href="Projects.html" style="color: #ffb23f;">Projects</a>
-      </li>
-
-      <li>
-        <a href="Rift_Apart.html" style="color: rgb(215, 107, 230);">Rift Apart</a>
-      </li>
-    </ul>
-  </header>
-
-  <form title="Click any where to drop a flower!" style="margin-left: 10px; position: fixed; top: 2.5%; background: linear-gradient(135deg, rgb(204, 0, 255), rgb(0, 255, 157)) ; border-radius: 10px; padding: 3.5px;">
-    <input type="checkbox" id="Hide" onclick="HideFlowers()">
-    <label>Hide Flowers</label>
-  </form>
-  <section class="Card">
-    <h1>Hey im Ash!</h1>
-    <hr>
-    <img id="Ash" src="gifs/Squish moff.gif">
-    <span style="font-size: 3vw;">Just your local furry {:</span>
-    <p style="font-size: 1.5vw;"> uhhh I guess you want more info.. Right? <p style="font-size: 1.5vw"> I'm a mediocre artist, who mainly draws moths, I know how to code, I play too much <a style="font-weight: bold; color: rgb(219, 0, 248);" href="https://www.fortnite.com">fortnite</a> lol, And I love making random shit. also I'm gay. :3 </p>
-  </section>
-
-  <section class="Card" style="text-align: center;">
-    <h1 style="font-size:xx-large; text-align: left; text-decoration: underline;">Projects</h1>
-    <ul>
-      <li>
-        <a href="Projects/ArtStuffWowie.html" style="color: rgb(184, 126, 207); background-image: url(Images/MsPaint29.png); background-size: 55px;">Art is the cool</a>
-      </li>
-
-      <li>
-        <a href="Projects/FunCodeThingsYippee.html?FromGardens=true" style="color: #ffb23f; background-image: url(Images/Code.png); background-repeat: no-repeat; background-size: 500px;">Fun Code Things Wow</a>
-      </li>
-
-      <li>
-        <a href="https://youtube.com/@ashashhicks69?si=0u2mw8gf_kLHiuhf" style="color: rgb(230, 107, 107); background-image: url(Images/yotob.png); background-size: 45px;">YouToeb</a>
-      </li>
-    </ul>
-  </section>
-
-  <footer>
-    <div>
-      <h3>Contact</h3>
-      <p>Find me on <a href="https://bsky.app/profile/ashashhicks69.bsky.social" style="color: #00aeff;">BlueSky</a> or send me an <a href="mailto:Ashashhicks69art@Gmail.com" style="color: #ffb23f;">Email!</a></p>
-
-      © 2025 Striker Studios – made with the power of the reality crystal that forms everything
+    <div id="mobilePopup">
+        <div class="popupContent">
+            <h1><u>Disclaimer!!!</u></h1>
+            <p>Just an FYI this website might look funny on certain devices. <br> YOU'VE BEEN WARNED!!!</p>
+            <button id="closePopup">Got it!</button>
+        </div>
     </div>
-  </footer>
 
-  <!-- Garden strip -->
-  <div id="garden"></div>
+    <nav>
+        <ul>
+            <li><img src="NavIcon.png" style="position: relative; top: 11px;"></li>
+            <li><a href="">The Gardens</a></li>
+            <li><a href="">Rift Apart</a></li>
+            <li><a href="">Links</a></li>
+        </ul>
+    </nav>
 
-  <script src="Garden.js"></script>
+    <div id="FlowerToggle">
+        <label for="Toggle" style="font-size: 14px; color: white; user-select: none;">Hide Flowers</label>
+        <input type="checkbox" id="Toggle" onclick="ToggleFlowers()">
+    </div>
+    <div id="flowerContainer"></div>
 
-  <script>
-    const Ash = document.getElementById("Ash")
-    const List = ["gifs/Squish moff.gif", "gifs/Spining moff.gif", "gifs/Expload.gif"]
-    setInterval(function () {Ash.src=List[Math.floor(Math.random() * 3)]}, 5000);
-  </script>
+    <header>
+        <img alt="The Ashtral Gardens" style="font-size: 60px;">
+        <h2 id="headerMSG">If you can read this you have a slow pc. (or you have javascript off...)</h2>
+    </header>
+
+    <h1 id="Announcement"></h1>
+    
+    <div class="Card">
+        <h1>Hello Im Ashashhicks69!!</h1>
+        <img src="Pfp.jpg" id="Pfp" alt="Profile picture">
+        <span><span style="font-size: 35px;">I'm a silly, Gay, Furry, Moth!</span> <br> That Likes to make Random things Such as Art, Games, Videos, Or Obviously Websites! <br> I also Really like to play the hit game <a href="https://www.Fortnite.com">Fortnite!</a> Way too Much... <br> <span style="font-size: 15px; color: rgba(255, 255, 255, 0.428)">(like it was unhealthy but im good now.. sorta.)</span> <br> Im also making a Series about a Protogen that can explore the multiverse! <br> I got one more line to fill soooo heres this i guess. (O~o)</span>
+        <img src="BigImg1.png" id="BigImg" alt="Extra image">
+    </div>
+
+    <div class="Featured">
+        <button class="nav" onclick="FeaturedLeftArrow()" style="left: 24px;"><</button>
+
+        <div class="FeaturedText">
+            <h1>RIFT APART</h1>
+            <p>A Protogen gains the ability to cross worlds..</p>
+            <a href="">GO TO PAGE</a>
+        </div>
+
+        <button class="nav" onclick="FeaturedRightArrow()" style="right: 24px;">></button>
+        <img src="RippleyHero.png" id="Hero">
+    </div>
+
+    <footer>
+      Contact Me on <a href="https://bsky.app/profile/ashashhicks69.bsky.social">BlueSky!</a> or <a href="mailto:Ashashhicks69art@gmail.com">Send Me An Email!</a>
+      © 2025 Striker Studios – made with the power of the reality crystal that forms everything
+    </footer>
+
+    <script>
+        const RandomMSG = document.getElementById("headerMSG")
+        const Messages = ["I sure do love my gradients.", "uhhhhhhhhhhhhhhhhhh Hi?????", "Did a Reality Crystal land here? - Rippley Slurp", "Yo Chat should we lowkey slime this guy?", '<img src="Pfp.jpeg" style="width:100px; margin-top:0;">', "What do you call a moth with no wings... a tragedy.", "Click anywhere to throw a Seed! And plant a Flower. I guess", "Fortnite is a game lol.", "Beastars 13 - pg.197 (Hehehe)", "B̷̜͋ë̵̳̻̹́ẃ̷̭̲̆ā̸̩̅r̵̊̄̎͜e̴͆͜ ̴͔̯̠̈́t̶͕̝̬̒̂͘h̵̛̰̖͕̉̕e̴͖̳̗̽ ̶͕̥̎̉o̵̠̓͛̈͜n̶̼̹͐̓̑e̴̡͋̂͐ ̷̹̗̑̽i̵̧͓̱̽n̷̺̰̔ ̵̮͕͉͑̌Ŗ̵̳̩̀Ê̶͈̹͗̚͜D̸̓̎͜", "私はフェムボーイが大好きです（笑）", "The Rift Apart Wiki has so many cool things wowwieee!!!", "I Play Deltarune but not undertale for some reason idk? (I own both Fyi)"]
+
+        RandomMSG.innerHTML = Messages[Math.floor(Math.random() * Messages.length)]
+
+        async function getAnnouncement() {
+            try {
+                const res = await fetch("https://announcement-worker.ashashhicks69art.workers.dev/");
+                const text = await res.text();
+                document.getElementById("Announcement").innerText = text;
+                if (text.length === 0 || text === "Expired :P") {
+                    document.getElementById("Announcement").style.visibility = "hidden";
+                }
+            } catch (err) {
+                console.error("Error fetching announcement:", err);
+                document.getElementById("Announcement").innerText = "Failed to load announcement";
+            }
+        }
+        getAnnouncement();
+        
+        let Theme = document.getElementById("theme")
+        const params = new URLSearchParams(window.location.search)
+        const theme = params.get('Theme')
+
+        Theme.href = theme ? theme + ".css" : "Innerspace.css"
+
+        const month = new Date().getMonth();
+        if (month === 9){
+            Theme.href = "BloodMoon.css"
+        } 
+
+        if (theme === "BloodMoon"){
+            const music = new Audio('dark-horror.mp3');
+            music.loop = true;
+            document.body.appendChild(music);
+            music.play();
+        }
+
+        const FeaturedDetails = [
+            {Title:"RIFT APART", Desc:"A Protogen gains the ability to cross worlds..", BGIMG:"GallaxyBG.png", HeroIMG:"RippleyHero.png", Link:"Rift_Apart.html"},
+            {Title:"ART STUFF", Desc:"Art Is cool i guess..", BGIMG:"GradientBG.png", HeroIMG:"DrawHero.png", Link:"ArtStuffs.html"},
+            {Title:"CODE STUFFS", Desc:"I Like to code stuff as well!!", BGIMG:"CodeBG.png", HeroIMG:"CodeHero.png", Link:"CodeStuffs.html"}
+        ]
+        let FeaturedIndex = 0
+
+        function UpdateFeatured(){
+            document.getElementsByClassName("FeaturedText")[0].innerHTML = `<h1>${FeaturedDetails[FeaturedIndex].Title}</h1> <p>${FeaturedDetails[FeaturedIndex].Desc}</p> <a href="${FeaturedDetails[FeaturedIndex].Link}">GO TO PAGE</a>`
+            if (Theme.href.includes("BloodMoon.css")){
+                document.getElementsByClassName("Featured")[0].style = `background-image: linear-gradient( rgb(48, 5, 5) 0%, rgba(20,20,40,0) 25%, rgba(20,20,40,0) 75%, rgb(48, 5, 5) 100%), url(${FeaturedDetails[FeaturedIndex].BGIMG});`
+            }
+            else{
+                document.getElementsByClassName("Featured")[0].style = `background-image: linear-gradient( rgb(40,30,60) 0%, rgba(20,20,40,0) 25%, rgba(20,20,40,0) 75%, rgb(40,30,60) 100%), url(${FeaturedDetails[FeaturedIndex].BGIMG});`
+            }
+            document.getElementById("Hero").src = `${FeaturedDetails[FeaturedIndex].HeroIMG}`
+        }
+
+        FeaturedIndex = Math.floor(Math.random() * FeaturedDetails.length)
+        UpdateFeatured()
+
+        function FeaturedLeftArrow(){
+            FeaturedIndex -= 1
+            if(FeaturedIndex < 0){FeaturedIndex = 2}
+            UpdateFeatured()
+        }
+        function FeaturedRightArrow(){
+            FeaturedIndex += 1
+            if(FeaturedIndex > 2){FeaturedIndex = 0}
+            UpdateFeatured()
+        }
+        
+        function ToggleFlowers(){
+            if (document.getElementById("Toggle").checked){
+                document.getElementById("flowerContainer").style.visibility = "hidden";
+            }
+            else{
+                document.getElementById("flowerContainer").style.visibility = "visible";
+            }
+        }
+        (function Flower() {
+            document.addEventListener("click", (e) => {
+                if (document.getElementById("Toggle").checked) return;
+                const seed = document.createElement("img");
+                seed.src = "Pfp.jpeg";
+                seed.className = "seed";
+                seed.style.left = e.clientX + "px";
+                document.getElementById("flowerContainer").appendChild(seed);
+
+                requestAnimationFrame(() => {
+                    seed.style.top = "100vh";
+                });
+
+                setTimeout(() => {
+                    seed.remove();
+
+                    const flower = document.createElement("img");
+                    flower.src = "Pfp.jpeg";
+                    flower.className = "flower";
+
+                    const size = 50 + Math.random() * 60;
+                    flower.style.width = size + "px";
+
+                    const hue = Math.floor(Math.random() * 360);
+                    flower.style.filter = `hue-rotate(${hue}deg)`;
+
+                    flower.style.left = (e.clientX - size / 2) + "px";
+                    document.getElementById("flowerContainer").appendChild(flower);
+                }, 3000);
+            });
+        })();
+
+        
+
+        // Take a wild guess who made this...
+        document.addEventListener("DOMContentLoaded", () => {
+            const popup = document.getElementById("mobilePopup");
+            const closeBtn = document.getElementById("closePopup");
+
+            if (window.innerWidth <= 768) {
+            popup.style.display = "flex";
+            }
+
+            closeBtn.addEventListener("click", () => {
+            popup.style.display = "none";
+            });
+
+            window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                popup.style.display = "none";
+            }
+            });
+        });
+    </script>
 
 </body>
 </html>
-
