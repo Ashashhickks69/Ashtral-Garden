@@ -149,7 +149,7 @@
             document.addEventListener("click", (e) => {
                 if (document.getElementById("Toggle").checked) return;
                 const seed = document.createElement("img");
-                seed.src = "Images/Horny.jpeg";
+                seed.src = "Images/Seed.png";
                 seed.className = "seed";
                 seed.style.left = e.clientX + "px";
                 document.getElementById("flowerContainer").appendChild(seed);
@@ -162,7 +162,7 @@
                     seed.remove();
 
                     const flower = document.createElement("img");
-                    flower.src = "Images/Horny.jpeg";
+                    flower.src = "Images/Flower.png";
                     flower.className = "flower";
 
                     const size = 50 + Math.random() * 60;
@@ -202,6 +202,7 @@
 
 </body>
 </html>
+
 
 
 
