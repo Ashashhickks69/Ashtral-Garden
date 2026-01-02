@@ -1,6 +1,6 @@
 body{
     background-color: rgb(40, 30, 60);
-    background-image: linear-gradient(rgba(78, 184, 255, 0) 0%, rgb(40, 30, 60) 15%), url(GallaxyBG.png);
+    background-image: linear-gradient(rgba(78, 184, 255, 0) 0%, rgb(40, 30, 60) 15%), url(Images/GallaxyBG.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -62,7 +62,7 @@ Header h2{
 
 /*I mostly Used ChatGpt For this part because im stupid*/
 .Card{
-  background-image: url("GradientBG.png");
+  background-image: url("Images/GradientBG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -125,7 +125,7 @@ Header h2{
 
   background-image:
     linear-gradient( rgb(40,30,60) 0%, rgba(20,20,40,0) 25%, rgba(20,20,40,0) 75%, rgb(40,30,60) 100%),
-    url(GallaxyBG.png);
+    url(Images/GallaxyBG.png);
   background-size: cover;
   background-position: center;
 
@@ -399,3 +399,4 @@ footer{
     font-size: 14px;
   }
 }
+
