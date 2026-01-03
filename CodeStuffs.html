@@ -96,9 +96,16 @@
         function Link(url) {
             window.location.href = url
         }
-
+        document.querySelectorAll("ol > li").forEach(li => {
+            li.addEventListener("mouseenter", () => {
+                const sound = new Audio("Music/ui Hover.mp3");
+                sound.volume = 1;
+                sound.play();
+            });
+        });
     </script>
 </body>
 
 </html>
+
 
