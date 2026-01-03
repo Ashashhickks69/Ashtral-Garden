@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discord Messages</title>
+  <style>
+    body { font-family: sans-serif; background: #1e1e1e; color: #eee; padding: 20px; }
+    #messages { display: flex; flex-direction: column; gap: 5px; max-width: 600px; }
+    .msg { padding: 8px 12px; background: #333; border-radius: 6px; word-break: break-word; }
+  </style>
+</head>
+<body>
+  <h1>Stored Messages</h1>
+  <div id="messages">Loading...</div>
+
+  <script>
+    async function loadMessages() {
+      const container = document.getElementById("messages");
+      container.textContent = "Loading...";
+
+      try {
+        const res = await fetch("https://annoymyfren-chat.ashashhicks69art.workers.dev/");
+        const data = await res.json();
+
+        container.innerHTML = "";
+        // Sort keys descending (newest first)
+        const keys = Object.keys(data).sort((a, b) => b - a);
+
+        keys.forEach(k => {
+          const div = document.createElement("div");
+          div.className = "msg";
+          div.textContent = data[k];
+          container.appendChild(div);
+        });
+
+        if (keys.length === 0) container.textContent = "No messages yet.";
+      } catch (err) {
+        container.textContent = "Failed to load messages.";
+        console.error(err);
+      }
+    }
+
+    loadMessages();
+    setInterval(loadMessages, 5000);
+  </script>
+</body>
+</html>
