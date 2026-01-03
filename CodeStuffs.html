@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stupid coding stuff</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+   
+
+    <style>
+        body {
+            margin: 0;
+            background-image: linear-gradient(300deg, rgba(255, 255, 255, 0) 0%, rgba(20, 20, 20, 0.801) 25%, rgb(15, 15, 15) 70%), url(Images/CodeBG.png);
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: orange;
+            font-family: Outfit, Rubik, Archivo;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #782b8494;
+            background-image: linear-gradient(rgb(139, 71, 170) 30%, rgb(109, 78, 112) 100%);
+            display: flex;
+        }
+        ul li a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        ul li a:hover {
+            background-color: #11111152;
+        }
+
+        ol {
+            list-style-type: none;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ol li {
+            margin: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 200px;
+            text-align: center;
+            background-color: #222222;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: -5px -5px rgb(0, 0, 0);
+            cursor: pointer;
+        }
+        ol li:hover {
+            background-color: #131313;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+            box-shadow: -15px -10px 5px rgba(0, 0, 0, 0.5);
+        }
+        ol li img {
+            width: 100%;
+            height: auto;
+        }
+        ol li h4 {
+            color: #ffffff;
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><img src="NavIcon.png" style="position: relative; top: 11px;"></li>
+            <li><a href="">The Gardens</a></li>
+            <li><a href="">Rift Apart</a></li>
+            <li><a href="">Links</a></li>
+        </ul>
+    </nav>
+
+    <ol>
+        <li onclick="Link('Projects/Snail_Race/Snail_Race.html')"><img src="Images/SnailRace_Thumbnail.png"><h4>Snail Race</h4></li>
+        <li onclick="Link('Projects/Ragebait/AnnoyMyFren.html')"><img src="Images/AMF_Thumbnail.png" style="height: 118px;"><h4>Annoy my friend</h4></li>
+        <li onclick="Link('')"><img src="Images/CodeBG.png" style="clip-path: inset(0px 0px 30px 0px);"><h4>If i get removed everything dies for some reason! :D</h4></li>
+    </ol>
+
+    <script>
+        function Link(url) {
+            window.location.href = url
+        }
+
+    </script>
+</body>
+</html>
