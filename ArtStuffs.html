@@ -163,7 +163,7 @@
             }
 
             #Clear {
-                bottom: 20px;
+                top: 20px;
                 right: 20px;
                 top: auto;
                 font-size: 16px;
@@ -292,28 +292,44 @@
 
 
         document.addEventListener("click", (e) => {
-            if (e.target.matches("Button")) {
-                return;
+            if (window.innerWidth <= 768) {
+                if (e.target.matches("img")) {
+                    e.preventDefault();
+                    const selected = e.target
+                    const fullScreen = document.getElementById("FullScreen");
+                    const fullImg = document.getElementById("FullImg");
+                    const fullTitle = document.getElementById("FullTitle");
+                    const fullDesc = document.getElementById("FullDesc");
+                    fullImg.src = selected.src;
+                    fullTitle.textContent = artworks[selected.id].title;
+                    fullDesc.textContent = artworks[selected.id].Desc;
+                    fullScreen.style.display = "block";
+                }
             }
-            const img = document.createElement("img");
-            img.src = "Images/Splat.png";
-            img.style.position = "absolute";
-            img.style.left = e.pageX - 40 + "px";
-            img.style.top = e.pageY - 40 + "px";
-            img.style.pointerEvents = "none";
+            else {
+                if (e.target.matches("Button")) {
+                    return;
+                }
+                const img = document.createElement("img");
+                img.src = "Images/Splat.png";
+                img.style.position = "absolute";
+                img.style.left = e.pageX - 40 + "px";
+                img.style.top = e.pageY - 40 + "px";
+                img.style.pointerEvents = "none";
 
-            const angle = Math.floor(Math.random() * 360);
-            img.style.transform = `rotate(${angle}deg)`;
-            const hue = Math.floor(Math.random() * 360);
-            img.style.filter = `hue-rotate(${hue}deg)`;
-            document.body.appendChild(img);
-            const size = Math.floor(Math.random() *120) + 60 + "px";
-            img.style.width = size
+                const angle = Math.floor(Math.random() * 360);
+                img.style.transform = `rotate(${angle}deg)`;
+                const hue = Math.floor(Math.random() * 360);
+                img.style.filter = `hue-rotate(${hue}deg)`;
+                document.body.appendChild(img);
+                const size = Math.floor(Math.random() *120) + 60 + "px";
+                img.style.width = size
 
-            const sound = new Audio("Music/Splat.mp3");
-            sound.play();
+                const sound = new Audio("Music/Splat.mp3");
+                sound.play();
+            }
         })
-
+        
         function Clear() {
             const splats = document.querySelectorAll("img[src='Images/Splat.png']");
             splats.forEach(splat => {
@@ -337,4 +353,5 @@
     </script>
 
 </body>
+
 </html>
