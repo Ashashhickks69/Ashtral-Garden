@@ -217,7 +217,7 @@
     <div id="FullScreen"><img id="FullImg" src="Images/Art/Stare but 2.png"><button id="CloseFullScreen">X</button><h1 id="FullTitle">Lorem ipsum</h1><h2 id="FullDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui libero maiores explicabo maxime amet dicta illum natus temporibus dolorum!</h2></div>
 
     <h1 class="Main">Welcome to The Gallery</h1>
-    <h2 class="Main">Right click on any artwork to view it in full screen.<br>Left click anywhere to splatter paint!</h2>
+    <h2 class="Main" id="Desctut">Right click on any artwork to view it in full screen.<br>Left click anywhere to splatter paint!</h2>
     <div id="Div" class="Row"></div>
     <button id="Clear" onclick="Clear()">Clear Paint</button>
 
@@ -350,8 +350,13 @@
                 explosions.forEach(explosion => explosion.remove());
             }, 700);
         }
+        
+        if (window.innerWidth <= 768) {
+            document.getElementById("Desctut").innerText = "Click on any artwork to view it in full screen"
+        }
     </script>
 
 </body>
 
 </html>
+
