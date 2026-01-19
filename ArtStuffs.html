@@ -334,6 +334,8 @@
         
         function Clear() {
             const splats = document.querySelectorAll("img[src='Images/Splat.png']");
+            let muted = false;
+            if (splats.length > 5) {if (confirm("This might be loud.. lower volume?")) { muted = true;} }
             splats.forEach(splat => {
                 const Explosion = document.createElement("img")
                 Explosion.src = "Images/explosion.gif";
@@ -345,7 +347,13 @@
                 document.body.appendChild(Explosion);
 
                 const sound = new Audio("Music/Explosion.mp3");
-                sound.play(); 
+                if (!muted) {
+                    sound.play();
+                }
+                else {
+                    sound.volume = 0.01;
+                    sound.play();
+                }
             });
             setTimeout(() => {
                 const explosions = document.querySelectorAll("img[src='Images/explosion.gif']");
@@ -361,5 +369,3 @@
 </body>
 
 </html>
-
-
