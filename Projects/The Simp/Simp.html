@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simp</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #Simp {
+            height: 30%;
+        }
+        audio {
+            position: fixed;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img id="Simp">
+    <audio autoplay loop>
+        <source src="Simp.mp3">
+    </audio>
+    <script>
+        const imgs = ["1.webp", "3.png"];
+        document.getElementById("Simp").src = imgs[Math.floor(Math.random() * imgs.length)];
+    </script>
+</body>
+</html>
