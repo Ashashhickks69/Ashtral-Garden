@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprite Framer</title>
+    <style>
+        body{
+            background-image: url(BG.png);
+            background-size: 100px;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            width: 100vw;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #782b8494;
+            background-image: linear-gradient(rgb(139, 71, 170) 30%, rgb(109, 78, 112) 100%);
+            display: flex;
+        }
+        ul li a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        ul li a:hover {
+            background-color: #11111152;
+        }
+
+        #Main{
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: rgba(71, 71, 71, 0);
+            backdrop-filter: grayscale(100%) brightness(50%);
+            border: solid rgb(255, 255, 255) 2px;
+            border-radius: 10px;
+            height: 500px;
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: auto;
+            align-items: center;
+        }
+
+        #Dropdown{
+            color: rgba(0, 0, 0, 0.541);
+            background-color: rgba(255, 255, 255, 0.411);
+            backdrop-filter: blur(5px);
+            border: solid rgb(255, 255, 255) 2px;
+            border-radius: 10px;
+            width: fit-content;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        h2{
+            margin: 0;
+            text-decoration: underline;
+        }
+        #DropdownContent{
+            display: block;
+            padding: 10px;
+        }
+
+        button{
+            padding: 10px;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.541);
+            background-color: rgba(255, 255, 255, 0.411);
+            backdrop-filter: blur(5px);
+            border: solid rgb(255, 255, 255) 2px;
+            border-radius: 30px;
+            transition: all 0.5s;
+            margin-bottom: 25px;
+        }
+        button:hover{
+            color: rgba(255, 255, 255, 0.541);
+            background-color: rgba(0, 0, 0, 0.411);
+            border: solid rgb(0, 0, 0) 2px;
+            transition: all 0,.5s;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="https://www.ashtral-garden.com/Images/NavIcon.png" style="position: relative; top: 11px;"></li>
+            <li><a href="https://www.ashtral-garden.com/">The Gardens</a></li>
+            <li><a href="https://www.ashtral-garden.com/Rift_Apart">Rift Apart</a></li>
+            <li><a href="https://www.ashtral-garden.com/Link_Tree">Links</a></li>
+        </ul>
+    </nav>
+
+    <img src="Logo.gif" alt="Logo">
+
+    <div id="Dropdown">
+        <h2>Instructions:</h2>
+        <span id="DropdownContent">Fuck you lmao</span>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" multiple required>
+    <input type="number" id="SizeInput" placeholder="Sprite Size (px)" min="1" required>
+    <input type="submit" id="GenerateButton" value="Generate Spritesheet">
+    <div id="Main">
+        
+    </div>
+
+    <button id="SaveAsPNG">Save Sprites as PNG</button>
+
+    <script>
+        const generateButton = document.getElementById('GenerateButton');
+        const fileInput = document.getElementById('fileInput');
+        const imageSize = document.getElementById('SizeInput');
+        const mainDiv = document.getElementById('Main');
+        generateButton.addEventListener('click', (event) => {
+            const files = fileInput.files;
+            mainDiv.replaceChildren();
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxHeight = `${imageSize.value}px`;
+                    mainDiv.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        const savePngButton = document.getElementById('SaveAsPNG');
+        const saveJpgButton = document.getElementById('SaveAsJPG');
+        savePngButton.addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const images = mainDiv.querySelectorAll('img');
+            const spriteSize = parseInt(imageSize.value);
+            const columns = images.length;
+            const rows = 1;
+            canvas.width = columns * spriteSize;
+            canvas.height = spriteSize;
+            images.forEach((img, index) => {
+                const x = (index % columns) * spriteSize;
+                const y = 0;
+                ctx.drawImage(img, x, y, spriteSize, spriteSize);
+            });
+            const link = document.createElement('a');
+            link.download = 'spritesheet.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    </script>
+</body>
+</html>
