@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snail Race (V2)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: linear-gradient(rgb(46, 136, 46), rgb(0, 94, 23));
+            background-size: 100vw 100vh;
+            background-attachment: fixed;
+            color: white;
+            font-family: "Comic Relief", cursive;
+        }
+
+        h1{
+            position: fixed;
+            z-index: 2;
+        }
+
+        #StartButton{
+            font-family: "Comic Relief", cursive;
+            background-color: white;
+            border:inset 2px;
+            color: black;
+            font-size: 30px;
+            position: absolute;
+            top: 21px;
+            left: 200px;
+        }
+        #StartButton:hover{
+            background-color: rgb(200, 200, 200);
+        }
+
+        #Settings{
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            border: solid 2px;
+            border-color: grey;
+            width: fit-content;
+            padding: 20px;
+            padding-top: 0;
+            position: absolute;
+            top: 20px;
+            left: 400px;
+            z-index: 2;
+        }
+        #Settings input{
+            margin-left: 10px;
+        }
+
+        #SpeedUi{
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            border: solid 2px;
+            border-color: grey;
+            width: fit-content;
+            padding: 20px;
+            position: fixed;
+            top: 15px;
+            left: 180px;
+            visibility: hidden;
+        }
+
+        .Snail{
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            transition: none 1s ease-in;
+        }
+        .Snail img{
+            width: 50px;
+            image-rendering: pixelated;
+        }
+        .Snail span{
+            top: -20px;
+            position: absolute;
+            text-wrap: nowrap;
+        }
+
+        #flag{
+            z-index: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+        #flag img{
+            width: 100px;
+            height: 100vh;
+            background-color: white;
+            image-rendering: pixelated;
+        }
+
+        #Restart{
+            font-family: "Comic Relief", cursive;
+            background-color: white;
+            border:inset 2px;
+            color: black;
+            font-size: 30px;
+            position: fixed;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Snail Race</h1>
+    <input type="submit" id="StartButton" value="Start Race" onclick="StartRace()">
+    <div id="Settings"><h2>Settings</h2>
+        <label>Snails</label>
+        <input type="number" id="SanilsInput" value="4" min="1">
+        <p>
+        <label>Use Follower skins</label>
+        <input type="checkbox" id="FollowerToggle">
+        <p>
+        <label>Custom Skins</label>
+        <input type="file" id="CustomSkinInput" accept=".json">
+        <p>
+        <label>Use Custom Skins</label>
+        <input type="checkbox" id="CustomToggle">
+    </div>
+    <div id="SpeedUi">
+        <label>Race Speed:</label>
+        <input type="range" id="SpeedModifier" min="1" max="40" value="10">
+    </div>
+    
+    
+
+    <div id="Snails">
+    </div>
+
+    <div id="flag">
+        <img src="Flag.png">
+    </div>
+
+    <button id="Restart" onclick="location.reload()">Restart Race</button>
+    <audio id="music" src="Thundersnail.mp3" loop>
+    <audio id="win" src="Win.mp3">
+
+    <script>
+        const SnailsContainer = document.getElementById("Snails");
+        const NumberInput = document.getElementById("SanilsInput");
+        const FollowerToggle = document.getElementById("FollowerToggle");
+        const StartButton = document.getElementById("StartButton");
+        const CustomSkinInput = document.getElementById("CustomSkinInput");
+        const CustomToggle = document.getElementById("CustomToggle");
+        const Settings = document.getElementById("Settings");
+        const Speed = document.getElementById("SpeedModifier");
+        const SpeedUi = document.getElementById("SpeedUi");
+
+        function UpdateSnails(){
+            SnailsContainer.replaceChildren();
+            if(FollowerToggle.checked) {
+                fetch("https://bluesky.ashashhicks69art.workers.dev/").then(res => res.json()).then(data => {
+                    NumberInput.setAttribute("Max", data.length);
+                    if(NumberInput.value > data.length) NumberInput.value = data.length;
+                    data.slice(0, NumberInput.value).forEach(follower => {
+                        const Snail = document.createElement("div");
+                        Snail.classList.add("Snail");
+                        Snail.innerHTML = `
+                            <span>${follower.displayName || follower.handle}</span>
+                            <img src="${follower.avatar}">
+                        `;
+                        Snail.style.top = (data.indexOf(follower) * 70) + 100 + "px";
+                        SnailsContainer.appendChild(Snail);
+                    });
+                });
+            }
+
+            if(CustomToggle.checked){
+                if(CustomSkinInput.files.length === 0) return;
+                const file = CustomSkinInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e){
+                    try{
+                        const data = JSON.parse(e.target.result);
+                        NumberInput.setAttribute("Max", data.length);
+                        if(NumberInput.value > data.length) NumberInput.value = data.length;
+                        data.slice(0, NumberInput.value).forEach(skin => {
+                            const Snail = document.createElement("div");
+                            Snail.classList.add("Snail");
+                            Snail.innerHTML = `
+                                <span>${skin.Name}</span>
+                                <img src="${skin.ImageURL}">
+                            `;
+                            Snail.style.top = (data.indexOf(skin) * 70) + 100 + "px";
+                            SnailsContainer.appendChild(Snail);
+                        });
+                    } catch(e) {
+                        alert("Invalid JSON file. Go to https://ashtral-garden.com/SnailRace/Snails.json for an example of the correct format.");
+                    }
+                }
+                reader.readAsText(file);
+            }
+
+            if(!FollowerToggle.checked && !CustomToggle.checked){
+                NumberInput.removeAttribute("Max");
+                for(let i = 0; i < NumberInput.value; i++){
+                    const Snail = document.createElement("div");
+                    Snail.classList.add("Snail");
+                    Snail.innerHTML = `
+                        <span>Snail ${i + 1}</span>
+                        <img src="Snail.png">
+                    `;
+                    Snail.style.top = (i * 70) + 100 + "px";
+                    Snail.style.filter = `hue-rotate(${i * 360 / Math.floor(Math.random() * 10 + 1)}deg)`;
+                    SnailsContainer.appendChild(Snail);
+                }
+            }
+        }
+
+        UpdateSnails();
+
+        NumberInput.addEventListener("change", () => {
+            UpdateSnails();
+        });
+        FollowerToggle.addEventListener("change", () => {
+            if(FollowerToggle.checked) CustomToggle.checked = false;
+            UpdateSnails();
+        });
+        CustomToggle.addEventListener("change", () => {
+            if(CustomToggle.checked) FollowerToggle.checked = false;
+            UpdateSnails();
+        });
+        CustomSkinInput.addEventListener("change", () => {
+            if(CustomToggle.checked){
+                UpdateSnails();
+            } 
+        })
+
+        var Started = false;
+        let Race;
+
+        function StartRace(){
+            if(Started) return;
+            Started = true;
+            document.getElementById("music").play();
+            StartButton.style.display = "none";
+            Settings.style.display = "none";
+            SpeedUi.style.visibility = "visible";
+            Race = setInterval(() => {
+                const snails = document.querySelectorAll(".Snail");
+                const Index = Math.floor(Math.random() * snails.length);
+                const Snail = snails[Index];
+
+                Snail.style.left = (Snail.offsetLeft + Math.floor(Math.random() * Speed.value)) + "px";
+
+                for(let i = 0; i < snails.length; i++){
+                    if(snails[i].offsetLeft + snails[i].offsetWidth >= window.innerWidth - document.getElementById("flag").offsetWidth){
+                        Win();
+                        clearInterval(Race);
+                        return;
+                    }
+                }
+            }, 100);
+        }
+
+        function Win(){
+            const snails = document.querySelectorAll(".Snail");
+            document.getElementById("music").pause();
+            document.getElementById("win").play();
+            let Winner;
+            for(let i = 0; i < snails.length; i++){
+                if(snails[i].offsetLeft + snails[i].offsetWidth >= window.innerWidth - document.getElementById("flag").offsetWidth){
+                    Winner = snails[i];
+                }
+            }
+            Winner.querySelector("span").textContent += " Wins!";
+            Winner.style.position = "Fixed";
+            Winner.style.transition = "top 1s ease-in, left 1s ease-in, transform 1s ease-in";
+            Winner.style.zIndex = 1000000000;
+            Winner.style.top = "50%";
+            Winner.style.left = "50%";
+            Winner.style.transform = "translate(-50%, -50%) scale(6)";
+            document.getElementById("Restart").style.display = "block";
+        }
+
+    </script>
+</body>
+</html>
