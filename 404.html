@@ -3,27 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>404 | Ashtral Gardens</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
             text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgb(109, 13, 187), rgb(255, 0, 119));
+            background-attachment: fixed;
             padding: 50px;
+            color: white;
         }
+
+        h1, h2 {
+            mask-image: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.24));
+        }
+
         h1 {
-            font-size: 50px;
+            font-size: 72px;
+            margin-bottom: 0;
+        }
+        h2 {
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 20px;
         }
         p {
-            font-size: 20px;
+            font-size: 18px;
+            margin-bottom: 50px;
         }
         a {
-            color: #007BFF;
+            color: white;
             text-decoration: none;
+            font-weight: bold;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a:hover {
+            background-color: white;
+            color: rgb(109, 13, 187);
         }
     </style>
 </head>
 <body>
     <h1>404</h1>
-    <p>Im Reworking the website So Some links may be Broken Try Again Later!!!</p>
+    <h2>Page Not Found</h2>
+    <p>Sorry, but the page you were trying to view does not exist.</p>
+    <a href="/">Return to homepage</a>
 </body>
 </html>
