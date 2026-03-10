@@ -23,7 +23,6 @@
         const data = await res.json();
 
         container.innerHTML = "";
-        // Sort keys descending (newest first)
         const keys = Object.keys(data).sort((a, b) => b - a);
 
         keys.forEach(k => {
@@ -41,7 +40,6 @@
     }
 
     loadMessages();
-    setInterval(loadMessages, 5000);
   </script>
 </body>
 </html>
