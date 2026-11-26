@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashtral Garden | Under Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-family: Outfit, Rubik Arial, sans-serif;
+        }
+        h1, h3{
+            font-size: 50px;
+            margin: 0;
+            mask-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
+        }
+        h3{
+            font-size: 25px;
+        }
+        @keyframes ButtonHover {
+            from {transform: translateY(0px);}
+            to {transform: translateY(5px);}
+        }
+        button{
+            transition: all 0.1s;
+            background-color: black;
+            color: white;
+            border: white solid 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: ButtonHover 2s ease-in-out infinite alternate ;
+            font-family: Outfit, Rubik Arial, sans-serif;
+            font-size: 20px;
+            position: absolute;
+            right: 35%;
+            left: 35%;
+            bottom: 10%;
+        }
+        button:hover{
+            scale: 1.05;
+        }
+        button:active{
+            scale: 0.95;
+        }
+        img{
+            position: absolute;
+            width: 20%;
+            min-width: 200px;
+            max-width: 250px;
+            z-index: -1;
+            left: 43%;
+            top: 250px;
+        }
+        #Ash{
+            width: 20%;
+            top: clamp(510px, 47vw, 600px);
+            display: none;
+            left: 35%
+        }
+    </style>
+    <h1>Under Construction</h1>
+    <h3 id="TextIThink">A Complete Overhall for this website is coming (again...) soooo ig just wait for now until im done working on it.</h3>
+    <button onclick="ClickedThingy()">I Dont Care Take me to the things</button>
+    <img id="Door" src="Astral Door Frame.png" title="Its Locked...">
+    <img id="Ash" src="Ash Lay Shit.png" title="HANDS ARE HARD OKAY! T~T as for the rest i have no excuse ummmmmmmm">
+    
+    <script>
+        function ClickedThingy(){
+            document.getElementById("TextIThink").innerText = "Okay fine.. bitch."
+            setTimeout(TakeToOldHome, 100)
+        }
+        function TakeToOldHome(){
+            location.href = "https://www.ashtral-garden.com/"
+        }
+        randomnum = Math.floor(Math.random() * 3)
+        console.log(randomnum)
+        if (randomnum == 2){
+            document.getElementById("Ash").style.display = "block"
+        }
+    </script>
+</body>
+</html>
