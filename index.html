@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -214,6 +214,9 @@
     <script>
         if (localStorage.getItem(ClosedDoor) !== "true"){
             location.href = "https://www.ashtral-garden.com/Door/index.html"
+        }
+        else{
+            localStorage.setItem(ClosedDoor, "false")
         }
     </script>
 </body>
